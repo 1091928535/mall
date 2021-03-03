@@ -1,0 +1,41 @@
+<template>
+  <swiper class="homeswiper">
+      <swiper-item v-for="(item,index) in banners" :key='index'>
+        <a :href="item.link">
+          <img :src="item.image" alt="" @load="imgLoad">
+        </a>
+      </swiper-item>
+  </swiper>
+</template>
+
+<script>
+import {Swiper,SwiperItem} from 'components/common/swiper/index'
+
+export default {
+  name:"HomeSwiper",
+  props:{
+    banners:{
+      type: Array,
+      default() {
+        return []
+      }
+    }
+  },
+  components:{
+    Swiper,
+    SwiperItem
+  },
+  methods:{
+    imgLoad(){
+      this.$emit('SwiperImgLoad')
+      // console.log('---------');
+    }
+  }
+}
+</script>
+
+<style>
+  /* .homeswiper {
+    padding-top: 44px;
+  } */
+</style>
